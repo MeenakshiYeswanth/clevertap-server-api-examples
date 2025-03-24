@@ -1,0 +1,1764 @@
+{
+	"info": {
+		"_postman_id": "c3a6fe4c-f358-4395-b361-21fe457b3dd4",
+		"name": "CleverTap API Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Report API Endpoints",
+			"item": [
+				{
+					"name": "Real-Time Counts API",
+					"item": [
+						{
+							"name": "Real-Time Counts API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_type\": true,\n    \"session_source\": true,\n    \"browser\": true,\n    \"os\": true,\n    \"device\": true,\n    \"new\": true\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/now.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"now.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Trends API",
+					"item": [
+						{
+							"name": "Trends API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc5865bd-4c47-4d41-9f9f-377c658109f2",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"reqid\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"event_name\": \"UTM Visited\",\n    \"from\": 20190101,\n    \"to\": 20191123,\n    \"unique\": false,\n    \"groups\": {\n        \"foo\": {\n            \"trend_type\": \"daily\"\n        },\n        \"bar\": {\n            \"trend_type\": \"weekly\"\n        },\n        \"foobar\": {\n            \"trend_type\": \"monthly\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/trends.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"trends.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3974729c-ca33-4c3a-b113-535eba58c5b9",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/trends.json?req_id=121160171605231",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"trends.json"
+									],
+									"query": [
+										{
+											"key": "req_id",
+											"value": "121160171605231"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Message Reports API",
+					"item": [
+						{
+							"name": "Get Message Reports API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"from\":\"20200111\",\n   \"to\":\"20201123\",\n   \"daily\":false,\n   \"channel\":[\n    \"push\"\n   ],\n   \"delivery\":[\n    \"inaction\", \"action\"\n   ],\n   \"status\":[\n    \"completed\"\n   ],\n   \"message_type\":[\n    \"single\"\n   ],\n   \"label\":[\n   ]\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/message/report.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"message",
+										"report.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Top Property Counts API",
+					"item": [
+						{
+							"name": "Top Property Counts API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "54260cb9-f732-4b82-9e6d-0e6cc9c99396",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"reqid\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"event_name\": \"TestEvent\",\n\t\"from\": 20210101,\n\t\"to\": 20210224,\n\t\"groups\": {\n\t\t\"foo\": {\n\t\t\t\"property_type\": \"event_properties\",\n\t\t\t\"name\": \"ProductKey\"\n\t\t}\n\t}\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/top.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"top.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2c0c0397-ca4c-42f2-bc03-bf97c1723904",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/top.json?req_id=121563531302686",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"top.json"
+									],
+									"query": [
+										{
+											"key": "req_id",
+											"value": "121563531302686"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Campaign API Endpoints",
+			"item": [
+				{
+					"name": "Stop Scheduled Campaign API",
+					"item": [
+						{
+							"name": "Stop Scheduled Campaign API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"id\": 1607770188}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/targets/stop.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"targets",
+										"stop.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Campaign Report API",
+					"item": [
+						{
+							"name": "Get Campaign Report API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"id\": 1607920890}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/targets/result.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"targets",
+										"result.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Campaigns API",
+					"item": [
+						{
+							"name": "Get Campaigns API (Campaigns Created Via API Only)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "485-7W7-495Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "3f5352ce131a44fba3d8b244a13e1faf",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"from\": 20210101,\"to\": 20210523}"
+								},
+								"url": {
+									"raw": "https://sk1-staging-11.wzrkt.com/1/targets/list.json",
+									"protocol": "https",
+									"host": [
+										"sk1-staging-11",
+										"wzrkt",
+										"com"
+									],
+									"path": [
+										"1",
+										"targets",
+										"list.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create Campaign API",
+					"item": [
+						{
+							"name": "Create Campaign API - Target Users by their Identities(EMAIL)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "485-7W7-495Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "3f5352ce131a44fba3d8b244a13e1faf",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"to\": {\n       \n        \"Email\": [\n            \"chhaya@clevertap.com\"\n          ]\n    },\n    \"tag_group\": \"my tag group\",\n    \"respect_frequency_caps\": false,\n    \"content\": {\n        \"subject\": \"Welcome\",\n        \"body\": \"<div>Your HTML content for the email</div>\",\n        \"sender_name\": \"CleverTap\"\n    }\n}"
+								},
+								"url": {
+									"raw": "https://sk1-staging-11.wzrkt.com/1/send/email.json",
+									"protocol": "https",
+									"host": [
+										"sk1-staging-11",
+										"wzrkt",
+										"com"
+									],
+									"path": [
+										"1",
+										"send",
+										"email.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Campaign API - Target Users by their Identities(PUSH)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"to\": {\n        \"Email\": [\n            \"chhaya@clevertap@.com\"\n        ]\n    },\n    \"tag_group\": \"my tag group\",\n    \"respect_frequency_caps\": false,\n    \"content\": {\n        \"title\": \"Welcome\",\n        \"body\": \"Hello world!\",\n        \"platform_specific\": {\n            \"windows\": {\n                \"deep_link\": \"example.com\",\n                \"key\": \"value_windows\"\n            },\n            \"ios\": {\n                \"deep_link\": \"example.com\",\n                \"sound_file\": \"example.caf\",\n                \"category\": \"notification category\",\n                \"badge_count\": 1,\n                \"key\": \"value_ios\"\n            },\n            \"android\": {\n                \"background_image\": \"http://example.jpg\",\n                \"default_sound\": true,\n                \"deep_link\": \"example.com\",\n                \"large_icon\": \"http://example.png\",\n                \"key\": \"value_android\",\n                \"wzrk_cid\": \"BRTesting\"\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/send/push.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"send",
+										"push.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Campaign API - Target User Events & Properties",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"My Sms API campaign\",\n    \"estimate_only\": true,\n    \"target_mode\": \"sms\",\n    \"where\": {\n        \"event_name\": \"Charged\",\n        \"from\": 20201001,\n        \"to\": 20201220,\n        \"common_profile_properties\": {\n            \"profile_fields\": [\n                {\n                    \"name\": \"language\",\n                    \"operator\": \"equals\",\n                    \"value\": \"french\"\n                }\n            ]\n        }\n    },\n    \"respect_frequency_caps\": false,\n    \"content\": {\n        \"body\": \"Sms body\"\n    },\n    \"when\": \"now\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/targets/create.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"targets",
+										"create.json"
+									]
+								},
+								"description": "https://developer.clevertap.com/docs/create-campaign-api#section-create-campaign-api-target-user-events-properties"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Campaign API - Target Users by their Identities(SMS)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"to\": {\n        \"FBID\": [\n            \"102029292929388\",\n            \"114342342453463\"\n        ],\n        \"GPID\": [\n            \"1928288389299292\"\n        ],\n        \"Email\": [\n            \"john@doe.com\",\n            \"jane@doe.com\"\n        ],\n        \"Identity\": [\n            \"JohnDoe\"\n        ],\n        \"objectId\": [\n            \"_asdnkansdjknaskdjnasjkndja\",\n            \"-adffajjdfoaiaefiohnefwprjf\"\n        ]\n    },\n    \"tag_group\": \"mytaggroup\",\n    \"respect_frequency_caps\": false,\n    \"content\": {\n        \"body\": \"Smsbody\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/send/sms.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"send",
+										"sms.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Campaign API - Target Users by their Identities (WEB PUSH))",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"to\": {\n        \"FBID\": [\n            \"102029292929388\",\n            \"114342342453463\"\n        ],\n        \"GPID\": [\n            \"1928288389299292\"\n        ],\n        \"Email\": [\n            \"john@doe.com\",\n            \"jane@doe.com\"\n        ],\n        \"Identity\": [\n            \"JohnDoe\"\n        ],\n        \"objectId\": [\n            \"_asdnkansdjknaskdjnasjkndja\",\n            \"-adffajjdfoaiaefiohnefwprjf\"\n        ]\n    },\n    \"tag_group\": \"my tag group\",\n    \"respect_frequency_caps\": false,\n     \"content\": {\n        \"title\": \"Hi!\",\n        \"body\": \"How are you doing today?\",\n        \"platform_specific\": {\n            \"chrome\": {\n                \"image\": \"https://www.exampleImage.com\",\n              \"icon\":\"https://www.exampleIcon.com\",\n                \"deep_link\": \"http://www.example.com\",\n              \"ttl\":10,\n              \"require_interaction\":true,\n              \"cta_title1\":\"title\",\n              \"cta_link1\":\"http://www.example2.com\",\n              \"cta_iconlink1\":\"https://www.exampleIcon2.com\"\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/send/webpush.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"send",
+										"webpush.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Test Webhook Payload",
+			"item": [
+				{
+					"name": "Test Webhook Payload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{type}}"
+							},
+							{
+								"key": "Content-Length",
+								"value": "{{content-length}}"
+							},
+							{
+								"key": "User-Agent",
+								"value": "{{user-agent}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"is_test\" : true , \"targetId\" : 1234 , \"key_values\" : { \"key\" : \"value\"} , \"profiles\" : [ { \"Identity\" : \"UserId\" , \"Email\" : \"User@user.com\" , \"push_token\" : \"Token\"} , { \"Identity\" : \"UserId\" , \"Email\" : \"User@user.com\" , \"push_token\" : \"Token\"} , { \"Identity\" : \"UserId\" , \"Email\" : \"User@user.com\" , \"push_token\" : \"Token\"} , { \"Identity\" : \"UserId\" , \"Email\" : \"User@user.com\" , \"push_token\" : \"Token\"} , { \"Identity\" : \"UserId\" , \"Email\" : \"User@user.com\" , \"push_token\" : \"Token\"}]}"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User Profile API Endpoints",
+			"item": [
+				{
+					"name": "Get Profile Count API",
+					"item": [
+						{
+							"name": "Get Profile Count APi",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6bbd7f69-ed32-4076-9428-40bd702ccac3",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"event_name\":\"App Launched\",\n\t\"from\":20200110,\n\t\"to\":20201125\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/profiles.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"profiles.json"
+									]
+								},
+								"description": "https://developer.clevertap.com/docs/get-profile-count-api"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Profile Count APi Partial Response",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1d5f1402-7ef7-4cbd-87a8-55571adb4451",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"event_name\":\"Submit Button Clicked\",\"event_properties\":[{\"name\":\"value\",\"operator\":\"contains\",\"value\":\"piz\"}],\"from\":20150810,\"to\":20151025}",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/profiles.json?req_id=123018859372463",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"profiles.json"
+									],
+									"query": [
+										{
+											"key": "req_id",
+											"value": "123018859372463"
+										}
+									]
+								},
+								"description": "https://developer.clevertap.com/docs/get-profile-count-api"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Upload Device Tokens API",
+					"item": [
+						{
+							"name": "Upload Device Tokens API GCM/FCM/APNS/CHROME",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"d\": [\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"frfsgvrwe:APfdsafsgdfsgghfgfgjkhfsfgdhjhbvcvnetry767456fxsasdf\",\n                \"type\": \"chrome\",\n                \"keys\": {\n                    \"p256dh\": \"BLc4xRzKlKORKWlbdgFaBrrPK3ydWAHo4M0gs0i1oEKgPpWC5cW8OCzVrOQRv-1npXRWk8udnW3oYhIO4475rds=\",\n                    \"auth\": \"5I2Bu2oKdyy9CwL8QVF0NQ==\"\n                }\n            },\n            \"objectId\": \"QBOpVJZmKilRAzfaiVS86Tovxm75lHxg\"\n        },\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"dYfuuBmHLGI:APA91bEfAq1b6NAmz0uhUbVxwSLqgKF25zDb7vhgajzS-bOAEUKekH_jbzO5oU1Qip-ZLvDpwKccxAxVNjC3rUUJnFTKDUiBcF9AtuG03_PRfjoUxLKHMR9qykK22SiubrLirNzQtNnO\",\n                \"type\": \"fcm\"\n            },\n            \"objectId\": \"__gc4grg4053N1eYkW6OBH71jhFev7b1iP\"\n        },\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"frfsgvrwe:APfdsafsgdfsgghfgfgjkhfsfgdhjhbvcvnetry767456fxsasdf\",\n                \"type\": \"gcm\"\n            },\n            \"objectId\": \"__QlXHaDHBZxZPLEMpPo6VvwdZ7FnbGvWA\"\n        },\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"frfsgvrwe:APfdsafsgdfsgghfgfgjkhfsfgdhjhbvcvnetry767456fxsasdf\",\n                \"type\": \"apns\"\n            },\n            \"objectId\": \"-HwB9gZWb3RcKhXCQ222FhAhkjeYQs0Hj\"\n        },\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"frfsgvrwe:APfdsafsgdfsgghfgfgjkhfsfgdhjhbvcvnetry767456fxsasdf\",\n                \"type\": \"wns\"\n            },\n            \"objectId\": \"~9XrS4Dy6GsnDbdX98Ijs63kEtJDQbhJA\"\n        },\n        {\n            \"type\": \"token\",\n            \"tokenData\": {\n                \"id\": \"frfsgvrwe:APfdsafsgdfsgghfgfgjkhfsfgdhjhbvcvnetry767456fxsasdf\",\n                \"type\": \"mpns\"\n            },\n            \"objectId\": \"~y9MqjkDGRfbzwwH8fZI6LIXgTKaEPxHr\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/upload",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get User Profiles by Events",
+					"item": [
+						{
+							"name": "Get User Profiles Using Cursor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cf54f4f1-6572-466a-86db-e3f4eced8921",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"cursor\",result.next_cursor);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/profiles.json?cursor=ZiZiNwMFBgdib2RybmguO20BBwVja2J8b2llfwQITQVha2Z6Z21qeAUEBwwraGd7Z3d%2Fek4ATQVibWF%2BYmxrcgBMQWtmbGN%2FZmplcwEHBQJvJmN9Zm5jewUIAgNjbGo3ZW9iex8d",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"profiles.json"
+									],
+									"query": [
+										{
+											"key": "cursor",
+											"value": "ZiZiNwMFBgdib2RybmguO20BBwVja2J8b2llfwQITQVha2Z6Z21qeAUEBwwraGd7Z3d%2Fek4ATQVibWF%2BYmxrcgBMQWtmbGN%2FZmplcwEHBQJvJmN9Zm5jewUIAgNjbGo3ZW9iex8d"
+										}
+									]
+								},
+								"description": "Get User Profile API Step 2"
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Profiles by Events",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c6be7866-2630-4a22-8d43-5f138a29a11f",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "a1bf97c9-e8d2-4763-b105-aa5abe5e5aea",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"cursor\",result.cursor);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"event_name\": \"App Launched\",\n    \"from\": 20200102,\n    \"to\": 20201125\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/profiles.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"profiles.json"
+									]
+								},
+								"description": "https://developer.clevertap.com/docs/get-user-profiles-api#section-step-1-get-cursor-by-specifying-events-for-user-profiles"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete User Profile API",
+					"item": [
+						{
+							"name": "Delete User Profile API Identity",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identity\":\"sftp7@clevertap.com\"\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/delete/profiles.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"delete",
+										"profiles.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Profile API Object ID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"guid\":\"__d786edf9c11f40161503d5260de88d101\"\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/delete/profiles.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"delete",
+										"profiles.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get User Profiles by ID/Email/Clevertap ID",
+					"item": [
+						{
+							"name": "Download User Profiles by Identity",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/profile.json?identity=RealtimeUninstall@clevertap.com",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"profile.json"
+									],
+									"query": [
+										{
+											"key": "identity",
+											"value": "RealtimeUninstall@clevertap.com"
+										}
+									]
+								},
+								"description": "https://developer.clevertap.com/docs/upload-device-tokens-api"
+							},
+							"response": []
+						},
+						{
+							"name": "Download User Profiles by objectId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/profile.json?objectId=__75fc304315a34b7f9e94eeaef7e86b0a",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"profile.json"
+									],
+									"query": [
+										{
+											"key": "objectId",
+											"value": "__75fc304315a34b7f9e94eeaef7e86b0a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download User Profiles by Email",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/profile.json?email=RealtimeUninstall@clevertap.com",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"profile.json"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "RealtimeUninstall@clevertap.com"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "You can download user profiles by requesting the specific user needed.\n\nYou can retrieve a user’s profile and all the events performed by a specific user. Supported identity values are email, a custom identity, or the CleverTap objectId.\n\nLink : https://developer.clevertap.com/docs/get-user-profiles-api#section-download-user-profiles-by-id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "92d6a0ca-6c1f-4b43-970b-d35474b44056",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f25e6dd5-3312-4378-bbac-ddf4e4762d67",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Upload User Profiles API",
+					"item": [
+						{
+							"name": "Upload User Profiles API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"d\":\n\t[\n\t\t{\n\t\t\t\"objectId\":\"25b11113c1af4e00839f530264dac6f8\",\n\t\t\t\"type\":\"profile\",\n\t\t\t\"profileData\":\n\t\t\t\t{\n\t\t\t\t\t\"Name\": \"TestProfileAPI\"\n\t\t\t\t}\n\t\t}\n\t]\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/upload",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Event API Endpoints",
+			"item": [
+				{
+					"name": "Upload Events API",
+					"item": [
+						{
+							"name": "Upload Events API",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"d\": [\n        {\n            \"identity\": \"RealtimeUninstall@clevertap.com\",\n            \"type\": \"event\",\n            \"evtName\": \"Product viewed\",\n            \"evtData\": {\n                \"Product name\": \"Casio Chronograph Watch\",\n                \"Category\": \"Mens Watch\",\n                \"Price\": 59.99,\n                \"Currency\": \"USD\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/upload",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Events API",
+					"item": [
+						{
+							"name": "Get Events Using Cursor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d6f0a1eb-474a-47a3-820c-d00d4dace001",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"cursor\",result.next_cursor);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/events.json?cursor=ZyZjfgUDBAFhY2t5Kz8NegQBBQVnYmV7Zm5gfk4BBwVja2JzYGpjfwAFTQQrai57K2oue04CBARnJmJmemouegcHAgFibGtyZSY3FAMGAABmamp8Z2tmeQRMAAJmbmN7b21iegYCB0hnJmI3ZyZiNwJMAwFnai57enc%3D",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"events.json"
+									],
+									"query": [
+										{
+											"key": "cursor",
+											"value": "ZyZjfgUDBAFhY2t5Kz8NegQBBQVnYmV7Zm5gfk4BBwVja2JzYGpjfwAFTQQrai57K2oue04CBARnJmJmemouegcHAgFibGtyZSY3FAMGAABmamp8Z2tmeQRMAAJmbmN7b21iegYCB0hnJmI3ZyZiNwJMAwFnai57enc%3D"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Cursor by Specifying Events Needed API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "50941c00-3283-4055-ab80-51b49421bbe0",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"cursor\",result.cursor);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"event_name\":\"App Launched\",\n\t\"from\":20200102,\n\t\"to\":20201106\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/events.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"events.json"
+									]
+								},
+								"description": "Get Events API Step 1"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Event Count API",
+					"item": [
+						{
+							"name": "Get Event Count API Partial",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cf1a4d85-8311-48c0-9034-60b700375913",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/events.json?req_id=124232869265206",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"events.json"
+									],
+									"query": [
+										{
+											"key": "req_id",
+											"value": "124232869265206"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Event Count API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ff345ac-b61a-42ec-a900-41991ee3fc71",
+										"exec": [
+											"var result = JSON.parse(responseBody);",
+											"pm.globals.set(\"req_id\",result.req_id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-CleverTap-Account-Id",
+										"value": "R99-655-K75Z",
+										"type": "text"
+									},
+									{
+										"key": "X-CleverTap-Passcode",
+										"value": "2a780beaa61e4320883cb7faee895d21",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"event_name\": \"Product Viewed\",\n    \"from\": 20210101,\n    \"to\": 20211125\n}"
+								},
+								"url": {
+									"raw": "https://sk1.api.clevertap.com/1/counts/events.json",
+									"protocol": "https",
+									"host": [
+										"sk1",
+										"api",
+										"clevertap",
+										"com"
+									],
+									"path": [
+										"1",
+										"counts",
+										"events.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "https://developer.clevertap.com/docs/clevertap-query-language",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://developer.clevertap.com/docs/clevertap-query-language",
+					"protocol": "https",
+					"host": [
+						"developer",
+						"clevertap",
+						"com"
+					],
+					"path": [
+						"docs",
+						"clevertap-query-language"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dcbdb093-b989-4295-871d-7a32e7aca2ee",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "641a5f77-dc2e-4c32-9ad5-5f81621cd6f2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2c9b5d4a-e8bb-4762-806f-279adea66af8",
+			"key": "id",
+			"value": "W67-774-7Z5Z",
+			"type": "string"
+		},
+		{
+			"id": "fa4cf25a-9fff-45fe-895a-fab0ab768dc5",
+			"key": "passcode",
+			"value": "IMQ-BMA-IHKL",
+			"type": "string"
+		},
+		{
+			"id": "a3ebbdcd-f531-4895-bea9-cfadac139f02",
+			"key": "type",
+			"value": "application/json",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
